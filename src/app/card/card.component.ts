@@ -9,6 +9,4 @@ import { CardInterface } from '../home/home.component';
 export class CardComponent {
 
   @Input() card: CardInterface
-
-  
 }

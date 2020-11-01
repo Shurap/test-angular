@@ -1,11 +1,14 @@
 <div class="header">
-   <div>
-    <a routerLink="/home" routerLinkActive="active">Home Component</a>
+   <div *ngIf="isLogged">
+      <a routerLink="/home" routerLinkActive="active">Home</a>
    </div>
-   <div>
-    <a routerLink="/login" routerLinkActive="active">Login Component</a>
+   <div *ngIf="!isLogged">
+      <a routerLink="/login" routerLinkActive="active">Login</a>
    </div>
-   <div>
-    <a routerLink="/register" routerLinkActive="active">Register Component</a>
+   <div *ngIf="!isLogged">
+      <a routerLink="/register" routerLinkActive="active">Register</a>
+   </div>
+   <div *ngIf="isLogged">
+      <a routerLink="/signout" routerLinkActive="active">Signout</a>
    </div>
 </div>

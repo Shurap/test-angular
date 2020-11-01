@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+// import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-register',
@@ -13,13 +15,18 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;// ????
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+    // private dataservice: DataService
+    ) { }
+
+  @Output() onChanged = new EventEmitter<boolean>();
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    // console.log(this.authService.getJson());
     this.authService.register(this.form).subscribe(
       (res) => {
         this.isSuccessful = true;
@@ -29,8 +36,14 @@ export class RegisterComponent implements OnInit {
         this.errorMessage = 'We dont have any server. So you are registered.'
         this.isSignUpFailed = true;
         this.isSuccessful = true;
+        // this.dataservice.isLogged = true;
       }
     )
+  }
+
+  go() {
+    this.router.navigate(['/home']);
+    this.onChanged.emit(true);
   }
 
 }
