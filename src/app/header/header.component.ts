@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -9,6 +9,9 @@ import { DataService } from '../services/data.service';
 
 export class HeaderComponent {
 
-  @Input() isLogged: boolean
+  isLogged: boolean = false;
 
+  constructor(private dataService: DataService) {
+    this.dataService.logged$.subscribe(data => this.isLogged = data)
+  }
 }
