@@ -1,43 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { DataService } from '../services/data.service';
+
+export interface RegitryDataInterface {
+  username: string
+  email: string
+  password: string
+}
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
-  form: any = {};
+  form: RegitryDataInterface = {
+    username: '',
+    email: '',
+    password: ''
+  };
   isSuccessful = false;
   errorMessage = '';
 
   constructor(
     private authService: AuthService,
-    private router: Router,
-    private dataservice: DataService
+    private router: Router
   ) { }
 
-  ngOnInit(): void {
-  }
-
   onSubmit(): void {
-    this.authService.register(this.form).subscribe(
+    this.authService.signUp(this.form).subscribe(
       (res) => {
         this.isSuccessful = true;
       },
       (err) => {
         this.errorMessage = 'We dont have any server. So you are registered.'
         this.isSuccessful = true;
-        this.dataservice.getJson()
       }
     )
   }
 
-  go() {
-    this.dataservice.changeLogged(true);
+  redirect() {
+    this.authService.logIn();
     this.router.navigate(['/home']);
   }
 

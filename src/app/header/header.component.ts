@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +9,13 @@ import { DataService } from '../services/data.service';
 
 export class HeaderComponent {
 
-  isLogged: boolean = false;
+  isLogged = false;
 
-  constructor(private dataService: DataService) {
-    this.dataService.logged$.subscribe(data => this.isLogged = data)
+  constructor(private authService: AuthService) { }
+
+  ngOnInit(): void {
+    this.authService.loggedSource.subscribe(data => {
+      this.isLogged = data
+    })
   }
 }

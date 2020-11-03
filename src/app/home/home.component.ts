@@ -1,8 +1,7 @@
-import { Component, ChangeDetectorRef, ChangeDetectionStrategy, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
-// import * as data from '../../assets/data.json';
 
-export interface CardInterface {
+export interface CardInterface { //all interfaces out types/index.ts
   title: string
   content: string
   imageUrl: string
@@ -11,30 +10,20 @@ export interface CardInterface {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
 
-  // cards: CardInterface[] = data['default'];
   cards: CardInterface[] = [];
 
-  constructor(private dataService: DataService, private changeDetection: ChangeDetectorRef, private ngZone: NgZone) {
-    this.dataService.data$.subscribe(data => {
-      this.ngZone.run(() => {
-        this.cards = [...data]
-      });
-      // this.cards = data.concat(this.cards)
-      // console.log('data', data[0])
-      // const obj=data[0]
-      // this.cards.push(data[0])
-      this.changeDetection.detectChanges();
+  // if isLogged = false then go home!
 
-      console.log('card', this.cards)
+  constructor(private dataService: DataService) { }
+
+  ngOnInit(): void {
+    this.dataService.dataSource.subscribe(data => {
+      this.cards = [...data]
     })
   }
 
-  // trackElement(index: number, element: any) {
-  //   return element.trackId;
-  // }
 }
