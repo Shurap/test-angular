@@ -1,5 +1,6 @@
-<h1>Page Login</h1>
+<div class="pageLogIn">
 <form
+  class="form"
   *ngIf="!isSuccessful"
   name="form"
   (ngSubmit)="signinForm.form.valid && onSubmit()"
@@ -66,4 +67,4 @@
   <button class="button" (click)="redirect()">Ok</button>
 </div>
 
-<h1>Page Login</h1>
+</div>

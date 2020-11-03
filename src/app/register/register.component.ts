@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-
-export interface RegitryDataInterface {
-  username: string
-  email: string
-  password: string
-}
+import { RegitryDataInterface } from '../types/interfaces';
 
 @Component({
   selector: 'app-register',

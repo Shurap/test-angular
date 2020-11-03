@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-
-export interface LoginDataInterface {
-  username: string
-  password: string
-}
+import { LoginDataInterface } from '../types/interfaces';
 
 @Component({
   selector: 'app-login',
