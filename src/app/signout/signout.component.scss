@@ -1,0 +1,37 @@
+@import '../scss/mixins.scss';
+
+.page {
+  margin-top: 70px;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $general-background-color;
+  width: 300px;
+  height: 300px;
+  padding-top: 50px;
+  margin: 20px;
+}
+
+.form-group {
+  display: flex;
+  margin-bottom: 40px;
+  padding-left: 5px;
+}
+
+.message {
+  margin: 40px;
+  color: white;
+}
+
+.button {
+  @include button(40px, 200px);
+  font-size: 16px;
+}

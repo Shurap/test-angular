@@ -1,8 +1,7 @@
 .header {
-  //@include test-border(green);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid rgb(26, 25, 25);
   background-color: rgba(0, 0, 0, 0.85);
@@ -11,4 +10,10 @@
   height: 70px;
   width: 100%;
   z-index: 100;
+}
+
+a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
 }

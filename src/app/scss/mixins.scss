@@ -4,6 +4,20 @@
   border: 5px solid $color
 }
 
+@mixin border-box($color) {
+  border-right: 1px solid $color;
+  border-top: none;
+  border-bottom: 1px solid $color;
+  border-left: none;
+  border-radius: 0 5px 0 0;
+
+  &:focus {
+    border-right: 1px solid $border-box-active-color;
+    border-bottom: 1px solid $border-box-active-color;
+    outline: none;
+  }
+}
+
 @mixin button($height, $width) {
   height: $height;
   width: $width;
@@ -16,8 +30,6 @@
   background-color: $button-color;
   border: none;
   border-radius: 20px;
-  // @include font(16px, Regular);
-  // color: $text-color;
 
   &:hover {
     background-color: $button-color-hover;

@@ -1,3 +1,78 @@
-h1 {
-    margin-top: 70px;
+@import '../scss/mixins.scss';
+
+.page {
+  margin-top: 70px;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $general-background-color;
+  width: 300px;
+  height: 300px;
+  padding-top: 50px;
+  margin: 20px;
+}
+
+.form-group {
+  display: flex;
+  margin-bottom: 40px;
+  padding-left: 5px;
+}
+
+.form-control {
+  @include border-box($border-color);
+  background-color: transparent;
+  color: $text-color;
+  margin: 5px 5px 5px 5px;
+  font-size: 16px;
+}
+
+.alert {
+  position: relative;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 30px;
+  width: 300px;
+  top: -40px;
+  left: -200px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid orange;
+  text-shadow: 0 0 3px black;
+  color: orange;
+  border-radius: 5px;
+  box-shadow: 0 0 5px black;
+  font-size: 16px;
+}
+
+.error:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 30px;
+  left: 40px;
+  border: 10px solid;
+  border-color: orange rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+}
+
+.message {
+  margin: 40px;
+  color: orange;
+}
+
+.button {
+  @include button(40px, 200px);
+  font-size: 16px;
 }

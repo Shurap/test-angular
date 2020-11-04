@@ -7,14 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  // isLogged: boolean = false
-  // isSpinner: boolean = false
-
-  // onActivate(componentReference) {
-  //   if (componentReference.onChanged) {
-  //     componentReference.onChanged.subscribe((value: boolean) => {
-  //       this.isLogged = value;
-  //     })
-  //   }
-  // }
 }
